@@ -11,6 +11,7 @@ export const JobsListing = ({ isHome = false }) => {
       const apiURL = isHome ? "/api/jobs?_limit=3" : "/api/jobs";
       try {
         const res = await fetch(apiURL);
+        console.log(res);
         const data = await res.json();
         setJobs(data);
       } catch (err) {
