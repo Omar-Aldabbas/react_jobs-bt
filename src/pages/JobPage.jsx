@@ -130,24 +130,3 @@ export const JobPage = () => {
     </>
   );
 };
-
-// const { id } = useParams();
-// const [isLoading, setIsLoading] = useState(true);
-// const [error, setIsError] = useState("");
-// useEffect(() => {
-//   const handleJob = async () => {
-//     try {
-//       const res = await fetch(`/api/jobs/${id}`);
-//       const data = await res.json();
-//       setJob(data);
-//     } catch (err) {
-//       console.log(err);
-//       setIsError("Job NotFound 404");
-//     } finally {
-//       setIsLoading(false);
-//     }
-//   };
-//   handleJob();
-// }, [id]);
-
-//   if (error) return <p style={{ color: "red" }}>Error: {error}</p>;
