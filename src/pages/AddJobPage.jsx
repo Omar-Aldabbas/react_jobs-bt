@@ -1,27 +1,34 @@
 import { useState } from "react";
+import { Form } from "react-router-dom";
+
+
 
 export const AddJobPage = () => {
   const [title, setTitle] = useState("");
-  const [type, settype] = useState("");
+  const [type, settype] = useState("Full-Time");
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
-  const [salary, setSalary] = useState("");
+  const [salary, setSalary] = useState("Under $50k");
   const [companyName, setCompanyName] = useState("");
   const [companyDescription, setCompanyDescription] = useState("");
   const [conatactEmail, setConatactEmail] = useState("");
   const [conatactPhone, setConatactPhone] = useState("");
-
 
   return (
     <div>
       <section className="bg-indigo-50">
         <div className="container m-auto max-w-2xl py-24">
           <div className="bg-white px-6 py-8 mb-4 shadow-md rounded-md border m-4 md:m-0">
-            <form>
-              <h2 className="text-3xl text-center font-semibold mb-6">Add Job</h2>
+            <Form method="post" >
+              <h2 className="text-3xl text-center font-semibold mb-6">
+                Add Job
+              </h2>
 
               <div className="mb-4">
-                <label htmlFor="type" className="block text-gray-700 font-bold mb-2">
+                <label
+                  htmlFor="type"
+                  className="block text-gray-700 font-bold mb-2"
+                >
                   Job Type
                 </label>
                 <select
@@ -29,6 +36,8 @@ export const AddJobPage = () => {
                   name="type"
                   className="border rounded w-full py-2 px-3"
                   required
+                  value={type}
+                  onChange={(e) => settype(e.target.value)}
                 >
                   <option value="Full-Time">Full-Time</option>
                   <option value="Part-Time">Part-Time</option>
@@ -48,7 +57,8 @@ export const AddJobPage = () => {
                   className="border rounded w-full py-2 px-3 mb-2"
                   placeholder="eg. Beautiful Apartment In Miami"
                   required
-                  
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
                 />
               </div>
               <div className="mb-4">
@@ -64,11 +74,16 @@ export const AddJobPage = () => {
                   className="border rounded w-full py-2 px-3"
                   rows="4"
                   placeholder="Add any job duties, expectations, requirements, etc"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
                 ></textarea>
               </div>
 
               <div className="mb-4">
-                <label htmlFor="type" className="block text-gray-700 font-bold mb-2">
+                <label
+                  htmlFor="type"
+                  className="block text-gray-700 font-bold mb-2"
+                >
                   Salary
                 </label>
                 <select
@@ -76,6 +91,8 @@ export const AddJobPage = () => {
                   name="salary"
                   className="border rounded w-full py-2 px-3"
                   required
+                  value={salary}
+                  onChange={(e) => setSalary(e.target.value)}
                 >
                   <option value="Under $50K">Under $50K</option>
                   <option value="$50K - 60K">$50K - $60K</option>
@@ -102,13 +119,18 @@ export const AddJobPage = () => {
                   className="border rounded w-full py-2 px-3 mb-2"
                   placeholder="Company Location"
                   required
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
                 />
               </div>
 
               <h3 className="text-2xl mb-5">Company Info</h3>
 
               <div className="mb-4">
-                <label htmlFor="company" className="block text-gray-700 font-bold mb-2">
+                <label
+                  htmlFor="company"
+                  className="block text-gray-700 font-bold mb-2"
+                >
                   Company Name
                 </label>
                 <input
@@ -117,6 +139,8 @@ export const AddJobPage = () => {
                   name="company"
                   className="border rounded w-full py-2 px-3"
                   placeholder="Company Name"
+                  value={companyName}
+                  onChange={(e) => setCompanyName(e.target.value)}
                 />
               </div>
 
@@ -133,6 +157,8 @@ export const AddJobPage = () => {
                   className="border rounded w-full py-2 px-3"
                   rows="4"
                   placeholder="What does your company do?"
+                  value={companyDescription}
+                  onChange={(e) => setCompanyDescription(e.target.value)}
                 ></textarea>
               </div>
 
@@ -150,6 +176,8 @@ export const AddJobPage = () => {
                   className="border rounded w-full py-2 px-3"
                   placeholder="Email address for applicants"
                   required
+                  value={conatactEmail}
+                  onChange={(e) => setConatactEmail(e.target.value)}
                 />
               </div>
               <div className="mb-4">
@@ -165,6 +193,8 @@ export const AddJobPage = () => {
                   name="contact_phone"
                   className="border rounded w-full py-2 px-3"
                   placeholder="Optional phone for applicants"
+                  value={conatactPhone}
+                  onChange={(e) => setConatactPhone(e.target.value)}
                 />
               </div>
 
@@ -176,7 +206,7 @@ export const AddJobPage = () => {
                   Add Job
                 </button>
               </div>
-            </form>
+            </Form>
           </div>
         </div>
       </section>

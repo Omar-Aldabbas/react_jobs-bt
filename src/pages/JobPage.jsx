@@ -1,5 +1,12 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaLocationDot } from "react-icons/fa6";
+import { deleteJob } from "../components/JobActions";
+
+
+
+
+
+
 
 export const JobLoader = async ({ params }) => {
   const res = await fetch(`/api/jobs/${params.id}`);
@@ -9,6 +16,22 @@ export const JobLoader = async ({ params }) => {
 
 export const JobPage = () => {
   const job = useLoaderData();
+  const navigate = useNavigate();
+  const onDeleteClick = async (id) => {
+    const confirm = window.confirm(
+      "Are you sure do you want to delete listing?"
+    );
+
+    if (!confirm) return;
+
+    try {
+      await deleteJob(id);
+      navigate("/jobs");
+    } catch (err) {
+      alert("Failed to delete job. Try again.");
+      console.error(err);
+    }
+  };
 
   return (
     <>
@@ -93,7 +116,10 @@ export const JobPage = () => {
                 >
                   Edit Job
                 </Link>
-                <button className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline block">
+                <button
+                  onClick={() => onDeleteClick(job.id)}
+                  className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded-full w-full focus:outline-none focus:shadow-outline block"
+                >
                   Delete Job
                 </button>
               </div>
@@ -101,7 +127,6 @@ export const JobPage = () => {
           </div>
         </div>
       </section>
-
     </>
   );
 };
