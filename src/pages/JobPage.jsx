@@ -2,12 +2,6 @@ import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { FaArrowLeft, FaLocationDot } from "react-icons/fa6";
 import { deleteJob } from "../components/JobActions";
 
-
-
-
-
-
-
 export const JobLoader = async ({ params }) => {
   const res = await fetch(`/api/jobs/${params.id}`);
   const data = await res.json();
